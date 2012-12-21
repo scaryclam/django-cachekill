@@ -14,3 +14,4 @@ def admin_cachekill(request):
 
 def user_view(request):
     return render(request, 'cachekill/template_test.html', {})
+
