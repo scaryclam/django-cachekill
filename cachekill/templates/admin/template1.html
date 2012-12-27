@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Template in the cache</h1>
 <form action='.' name="cachekillform" method="post">
+{% csrf_token %}
 {% for template_name, template_object in cached_loader.items %}
 <p><input type="checkbox" name="template_name" value="{{ template_name }}" />{{ template_name }}</p>
 {% empty %}
