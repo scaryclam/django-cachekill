@@ -8,15 +8,23 @@ def admin_cachekill(request):
         render(request, 'admin/template1.html', {})
     from django.template.loader import template_source_loaders
     cached_loader = None
-    if request.method == "POST":
-        print "POSTED:", request.POST
+
     for loader in template_source_loaders:
         if hasattr(loader, 'template_cache'):
+            if request.method == "POST":
+                remove_from_cache(request.POST.copy(), cached_loader, loader)
             cached_loader = loader.template_cache
+            break
+
     context = {'globals': template_source_loaders,
                'cached_loader': cached_loader}
     response = render(request, 'admin/template1.html', context)
     return response
+
+
+def remove_from_cache(post_data, template_dict, loader):
+    for key, value in post_data.get('template_name', {}):
+        loader.template_cache.pop(key, None)
 
 
 def admin_testview(request):
