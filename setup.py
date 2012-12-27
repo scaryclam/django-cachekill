@@ -15,7 +15,7 @@ setup(
     ],
     package_data={
         'cachekill': [
-            'templates/*',
+            'templates/admin/*',
         ]
     },
     classifiers=[

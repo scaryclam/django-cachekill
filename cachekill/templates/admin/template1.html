@@ -1,6 +1,11 @@
 {% extends "admin/base_site.html" %}
 {% load i18n %}
 {% block content %}
-{{ globals }}
+<h1>Template in the cache</h1>
+{% for template_name, template_object in cached_loader.items %}
+<p>{{ template_name }}</p>
+{% empty %}
+<p>Nothing is in the cache</p>
+{% endfor %}
 {{ block.super }}
 {% endblock %}
