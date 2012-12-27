@@ -8,6 +8,8 @@ def admin_cachekill(request):
         render(request, 'admin/template1.html', {})
     from django.template.loader import template_source_loaders
     cached_loader = None
+    if request.method == "POST":
+        print "POSTED:", request.POST
     for loader in template_source_loaders:
         if hasattr(loader, 'template_cache'):
             cached_loader = loader.template_cache
