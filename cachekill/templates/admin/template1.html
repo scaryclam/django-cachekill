@@ -2,10 +2,13 @@
 {% load i18n %}
 {% block content %}
 <h1>Template in the cache</h1>
+<form action='.' name="cachekillform" method="post">
 {% for template_name, template_object in cached_loader.items %}
-<p>{{ template_name }}</p>
+<p><input type="checkbox" name="template_name" value="{{ template_name }}" />{{ template_name }}</p>
 {% empty %}
 <p>Nothing is in the cache</p>
 {% endfor %}
+<input type="submit" value="Delete cache">
+</form>
 {{ block.super }}
 {% endblock %}
