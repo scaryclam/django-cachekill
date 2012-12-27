@@ -12,7 +12,9 @@ def admin_cachekill(request):
     for loader in template_source_loaders:
         if hasattr(loader, 'template_cache'):
             if request.method == "POST":
-                remove_from_cache(request.POST.copy(), cached_loader, loader)
+                print request.POST
+                print djdjdjd
+                remove_from_cache(request, cached_loader, loader)
             cached_loader = loader.template_cache
             break
 
