@@ -23,8 +23,8 @@ def admin_cachekill(request):
 
 
 def remove_from_cache(post_data, template_dict, loader):
-    for key, value in post_data.get('template_name', {}).iteritems():
-        loader.template_cache.pop(key, None)
+    for template_name in post_data.get('template_name', []):
+        loader.template_cache.pop(template_name, None)
 
 
 def admin_testview(request):
